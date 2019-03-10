@@ -1,0 +1,6 @@
+#Objects files
+*.o
+#backup-files using txt editor 
+.main.c.swp
+main.c~
+#main.c#
