@@ -51,7 +51,7 @@ void chessboard(char b[z][z])
 	//whitefigure
 	b[7][1] = 'R';
 	b[7][2] = 'N';
-	b[7][3] = 'N';
+	b[7][3] = 'B';
 	b[7][4] = 'Q';
 	b[7][5] = 'K';
 	b[7][6] = 'B';
