@@ -3,5 +3,7 @@
 #backup-files using txt editor 
 .main.c.swp
 main.c~
-chessviiz.exe
+*.exe
 #main.c#
+prob.cpp
+ *.stackdump
