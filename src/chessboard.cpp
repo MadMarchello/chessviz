@@ -1,6 +1,5 @@
 #include "chessboard.h"
-
-void chessboard(char b[8][8]) {
+void chessboard(char b[][8]) {
   for (int i = 0; i < 8; i++) {
     for (int j = 0; j < 8; j++) {
       b[i][j] = ' ';
@@ -16,6 +15,7 @@ void chessboard(char b[8][8]) {
   b[0][5] = 'b';
   b[0][6] = 'n';
   b[0][7] = 'r';
+
   b[1][0] = 'p';
   b[1][1] = 'p';
   b[1][2] = 'p';
@@ -33,6 +33,7 @@ void chessboard(char b[8][8]) {
   b[7][5] = 'B';
   b[7][6] = 'N';
   b[7][7] = 'R';
+
   b[6][0] = 'P';
   b[6][1] = 'P';
   b[6][2] = 'P';
