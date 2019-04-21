@@ -13,12 +13,10 @@ void chessgame(char b[][8]) {
   int bukv1 = step[3] - 'a';
   int cifra1 = step[4] - '0';
   cifra1 -= 1;
-  char temp;
   cout << "koord " << bukv << " " << cifra << endl;
   cout << "koord_end " << bukv1 << cifra1 << endl;
 
-  temp = b[cifra][bukv];
-  b[cifra][bukv] = b[cifra1][bukv1];
-  b[cifra1][bukv1] = temp;
+  b[cifra1][bukv1] = b[cifra][bukv];
+  b[cifra][bukv] = ' ';
   cout << endl;
 }
