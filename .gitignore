@@ -6,3 +6,4 @@ main.c~
 *.exe
 #main.c#
 prob.cpp
+ *.exe.stackdump
