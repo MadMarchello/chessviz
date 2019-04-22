@@ -1,23 +1,30 @@
-
 .PHONY: all clean
 
-all: chess
+way1 = src/main.cpp
+way2 = src/chessboard.cpp
+way3 = src/chessgame.cpp
+way4 = src/print_chess.cpp
+obj1 = build/main.o
+obj2 = build/chessboard.o
+obj3 = build/chessgame.o
+obj4 = build/print_chess.o
 
-chess: main.o chessboard.o chessgame.o print_chess.o
-	g++ build/main.o build/chessboard.o build/print_chess.o build/chessgame.o -o chess
+all: bin/chessviz
 
-main.o:
-	g++ -Wall -Werror -c src/main.cpp -o build/main.o 
+bin/chessviz: $(obj1) $(obj2) $(obj3) $(obj4)
+	g++ $^ -o $@
 
-chessboard.o:
-	g++ -Wall -Werror -c src/chessboard.cpp -o build/chessboard.o 
+$(obj1): $(way1)
+	g++ -c $^ -Werror -o $@
 
-print_chess.o:
-	g++ -Wall -Werror -c src/print_chess.cpp -o build/print_chess.o 
+$(obj2): $(way2)
+	g++ -c $^ -Werror -o $@
 
-chessgame.o:
-	g++ -Wall -Werror -c src/chessgame.cpp -o build/chessgame.o 
+$(obj3): $(way3)
+	g++ -c $^ -Werror -o $@
 
+$(obj4): $(way4)
+	g++ -c $^ -Werror -o $@
 
 clean:
 	rm -rf build/*.o
