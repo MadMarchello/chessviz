@@ -2,6 +2,11 @@
 #include <iostream>
 #include <string>
 using namespace std;
+void figure_step_rule(int bukv, int cifra, int bukv1, int cifra1, char b[][8])
+{
+    b[cifra1][bukv1] = b[cifra][bukv];
+    b[cifra][bukv] = ' ';
+}
 void chessgame(char b[][8])
 {
     string step;
@@ -16,8 +21,5 @@ void chessgame(char b[][8])
     cifra1 -= 1;
     cout << "koord " << bukv << " " << cifra << endl;
     cout << "koord_end " << bukv1 << cifra1 << endl;
-
-    b[cifra1][bukv1] = b[cifra][bukv];
-    b[cifra][bukv] = ' ';
-    cout << endl;
+    figure_step_rule(bukv, cifra, bukv1, cifra1, b);
 }
