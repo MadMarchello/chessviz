@@ -22,7 +22,7 @@ void figure_step_rule(
         cout << "Incorrect input, please try again\n";
         return chessgame(b);
     }
-    if (strcmp(pawn, hod) == 0) {
+    if (b[cifra][bukv] == 'P') {
         if (cifra1 == cifra - 1) {
             b[cifra1][bukv1] = b[cifra][bukv];
             b[cifra][bukv] = ' ';
