@@ -4,10 +4,10 @@ way1 = src/main.cpp
 way2 = src/chessboard.cpp
 way3 = src/chessgame.cpp
 way4 = src/print_chess.cpp
-obj1 = build/main.o
-obj2 = build/chessboard.o
-obj3 = build/chessgame.o
-obj4 = build/print_chess.o
+obj1 = build/src/main.o
+obj2 = build/src/chessboard.o
+obj3 = build/src/chessgame.o
+obj4 = build/src/print_chess.o
 
 all: bin/chessviz
 
