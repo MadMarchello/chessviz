@@ -5,10 +5,15 @@
 #include <stdlib.h>
 #include <string.h>
 using namespace std;
+void Move(char b[][8], int cifra, int cifra1, int bukv, int bukv1)
+{
+    b[cifra1][bukv1] = b[cifra][bukv];
+    b[cifra][bukv] = ' ';
+}
 void figure_step_rule(
         int bukv, int cifra, int bukv1, int cifra1, char b[][8], string step)
 {
-    bool peshka;
+    bool peshka = false;
     char pawn = 'P';
     char hod = b[cifra][bukv];
     cout << endl << endl;
@@ -23,9 +28,18 @@ void figure_step_rule(
         return chessgame(b);
     }
     if (b[cifra][bukv] == 'P') {
+        if ((bukv == 2) && (cifra1 == cifra + 2)) {
+            if (peshka == false) {
+                peshka == true;
+                Move(b, cifra, cifra1, bukv, bukv1);
+            } else {
+                cout << "Incorrect input pawn, please try again\n";
+                return chessgame(b);
+            }
+        }
+
         if (cifra1 == cifra - 1) {
-            b[cifra1][bukv1] = b[cifra][bukv];
-            b[cifra][bukv] = ' ';
+            Move(b, cifra, cifra1, bukv, bukv1);
         }
     }
 }
