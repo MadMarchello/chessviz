@@ -27,5 +27,6 @@ $(obj4): $(way4)
 	g++ -c $^ -Werror -o $@
 
 clean:
-	rm -rf build/*.o
+	rm -rf build/src/*.o
+	rm -rf build/test/*.o
 	rm -rf *.o
