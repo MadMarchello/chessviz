@@ -1,5 +1,4 @@
 #include "chessgame.h"
-#include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,7 +11,7 @@ void Move(char b[][8], int cifra, int cifra1, int bukv, int bukv1)
 int correct_input(char step[])
 {
     if (strcmp(step, "exit") == 0) {
-        printf( "You exited the programm \n";
+        printf("You exited the programm \n");
         exit(0);
     }
     int bukv = step[0] - 'a';
@@ -32,19 +31,19 @@ int correct_input(char step[])
 void figure_step_rule(
         int bukv, int cifra, int bukv1, int cifra1, char b[][8], char step[])
 {
-    bool peshka = false;
+    int peshka = 0;
     char pawn = 'P';
     char hod = b[cifra][bukv];
     puts("\n");
     printf("%d \n\n", b[cifra][bukv]);
 
-    if (strcmp(b[cifra][bukv], 'P') == 0) {
+    if (b[cifra][bukv] == 'P') {
         if ((bukv == 2) && (cifra1 == cifra + 2)) {
-            if (peshka == false) {
-                peshka == true;
+            if (peshka == 0) {
+                peshka == 1;
                 Move(b, cifra, cifra1, bukv, bukv1);
             } else {
-                printf( "Incorrect input pawn, please try again\n";
+                printf("Incorrect input pawn, please try again\n");
                 return chessgame(b);
             }
         }

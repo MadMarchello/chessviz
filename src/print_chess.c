@@ -1,7 +1,6 @@
 #include "print_chess.h"
-#include <iostream>
-using namespace std;
-
+#include <stdio.h>
+#include <stdlib.h>
 void printchess(char b[][8])
 {
     for (int i = 0; i < 8; i++) {
