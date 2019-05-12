@@ -67,7 +67,8 @@ void chessgame(char b[][8])
     cifra1 -= 1;
     printf("koord %d %d\n", bukv, cifra);
     printf("koord_end %d %d \n", bukv1, cifra1);
-    printf("%d ", step) correct_input(step);
+    printf("%d ", step);
+    correct_input(step);
     if (correct_input == 0) {
         figure_step_rule(bukv, cifra, bukv1, cifra1, b, step);
     } else {
