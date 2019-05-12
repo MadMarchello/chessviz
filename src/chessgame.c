@@ -33,11 +33,10 @@ int correct_input(char step[5])
     }
 }
 
-void figure_step_rule(
+int figure_step_rule(
         int bukv, int cifra, int bukv1, int cifra1, char b[][8], char step[])
 {
     int peshka = 0;
-    char pawn = 'P';
     puts("\n");
     printf("%c \n\n", b[cifra][bukv]);
 
@@ -45,17 +44,18 @@ void figure_step_rule(
         if ((cifra == 6) && (cifra1 == cifra - 2)
             && b[cifra][bukv + 1] != ' ') {
             if (peshka == 0) {
-                peshka == 1;
-                Move(b, cifra, cifra1, bukv, bukv1);
+                peshka = 1;
+                return 0;
             } else {
                 printf("Incorrect input pawn, please try again\n");
-                return chessgame(b);
+                return 1;
             }
         }
         if (cifra1 == cifra - 1 && b[cifra][bukv + 1] != ' ') {
-            Move(b, cifra, cifra1, bukv, bukv1);
+            return 0;
         }
     }
+    return 0;
 }
 void chessgame(char b[][8])
 {
@@ -73,10 +73,11 @@ void chessgame(char b[][8])
     printf("%s \n", step);
     // Move(b, cifra, cifra1, bukv, bukv1);
     check = correct_input(step);
-
     if (check == 0) {
-        figure_step_rule(bukv, cifra, bukv1, cifra1, b, step);
-        //  Move(b, cifra, cifra1, bukv, bukv1);
+        check = figure_step_rule(bukv, cifra, bukv1, cifra1, b, step);
+        if (check == 0) {
+            Move(b, cifra, cifra1, bukv, bukv1);
+        }
     } else {
         return chessgame(b);
     }
