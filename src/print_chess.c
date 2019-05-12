@@ -6,7 +6,7 @@ void printchess(char b[][8])
     for (int i = 0; i < 8; i++) {
         printf("%d ", i + 1);
         for (int j = 0; j < 8; j++) {
-            printf("%d ", b[i][j]);
+            printf("%c ", b[i][j]);
         }
         puts("");
     }
