@@ -42,7 +42,8 @@ void figure_step_rule(
     printf("%c \n\n", b[cifra][bukv]);
 
     if (b[cifra][bukv] == 'P') {
-        if ((bukv == 2) && (cifra1 == cifra + 2)) {
+        if ((cifra == 6) && (cifra1 == cifra - 2)
+            && b[cifra][bukv + 1] != ' ') {
             if (peshka == 0) {
                 peshka == 1;
                 Move(b, cifra, cifra1, bukv, bukv1);
@@ -51,8 +52,7 @@ void figure_step_rule(
                 return chessgame(b);
             }
         }
-
-        if (cifra1 == cifra - 1) {
+        if (cifra1 == cifra - 1 && b[cifra][bukv + 1] != ' ') {
             Move(b, cifra, cifra1, bukv, bukv1);
         }
     }
