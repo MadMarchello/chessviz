@@ -1,31 +1,43 @@
-.PHONY: all clean
+CFLAGS = -Wall -Werror -std=c99
+CC = gcc
+OBJ = $(CC) -c $< -o $@ $(CFLAGS)
+MKDIR_BUILD = mkdir -p build/src
 
-way1 = src/main.cpp
-way2 = src/chessboard.cpp
-way3 = src/chessgame.cpp
-way4 = src/print_chess.cpp
-obj1 = build/src/main.o
-obj2 = build/src/chessboard.o
-obj3 = build/src/chessgame.o
-obj4 = build/src/print_chess.o
+.PHONY: clean test
 
-all: bin/chessviz
+default: bin/chess.exe
 
-bin/chessviz: $(obj1) $(obj2) $(obj3) $(obj4)
-	g++ $^ -o $@
+test: bin/chess_test.exe
+	$<
 
-$(obj1): $(way1)
-	g++ -c $^ -Werror -o $@
+bin/chess_test.exe: build/test/main_test.o build/src/print_chess.o build/src/chessboard.o build/src/chessgame.o
+	mkdir -p bin
+	$(CC) $^ -o $@ $(CFLAGS)
 
-$(obj2): $(way2)
-	g++ -c $^ -Werror -o $@
+build/test/main_test.o: test/main.c thirdparty/ctest.h src/chessgame.h
+	mkdir -p build/test
+	$(OBJ) -I thirdparty -I src
 
-$(obj3): $(way3)
-	g++ -c $^ -Werror -o $@
+bin/chess.exe: build/src/main.o build/src/print_chess.o build/src/chessboard.o build/src/chessgame.o
+	mkdir -p bin
+	$(CC) $^ -o $@ $(CFLAGS)
 
-$(obj4): $(way4)
-	g++ -c $^ -Werror -o $@
+build/src/main.o: src/main.c
+	$(MKDIR_BUILD)
+	$(OBJ)
+
+build/src/print_chess.o: src/print_chess.c src/print_chess.h
+	$(MKDIR_BUILD)
+	$(OBJ)
+
+build/src/chessboard.o: src/chessboard.c src/chessboard.h
+	$(MKDIR_BUILD)
+	$(OBJ)
+
+build/src/chessgame.o: src/chessgame.c src/chessgame.h
+	$(MKDIR_BUILD)
+	$(OBJ)
+
 
 clean:
-	rm -rf build/*.o
-	rm -rf *.o
+	rm -rf build bin
